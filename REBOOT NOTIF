@@ -1,4 +1,5 @@
 Sub SendRebootNotification ()
+
     Dim wsCombined As Worksheet ' Variable for the combined data worksheet
     Dim combinedWs As Worksheet
     Dim lastRow As Long
@@ -185,5 +186,5 @@ Sub SendRebootNotification ()
     
     ' Notify user that emails have been sent
     MsgBox "Process Complete.", vbInformation
-       
+
 End Sub
