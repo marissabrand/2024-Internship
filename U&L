@@ -1,5 +1,6 @@
 Sub UserAddition()
 ' ORIGINAL CODE BY MARISSA J BRAND
+
     ThisWorkbook.Sheets("ADD USER").Unprotect Password:="[INSERT PASSWORD TO UNLOCK WORKSHEET]"
     ThisWorkbook.Sheets("Users & Licenses").Unprotect Password:="[INSERT PASSWORD TO UNLOCK WORKSHEET]"
 ' Declare Variables
@@ -92,6 +93,12 @@ End Sub
 
 
 
+
+
+
+
+
+
 Sub UserReplacement()
 ' ORIGINAL CODE BY MARISSA J BRAND
 
@@ -140,6 +147,12 @@ ThisWorkbook.Sheets("REPLACE USER").Protect Password:="[INSERT PASSWORD TO UNLOC
 ThisWorkbook.Sheets("Users & Licenses").Protect Password:="[INSERT PASSWORD TO UNLOCK WORKSHEET]"
 
 End Sub
+
+
+
+
+
+
 
 
 
