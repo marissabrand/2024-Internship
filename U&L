@@ -3,6 +3,7 @@ Sub UserAddition()
 
     ThisWorkbook.Sheets("ADD USER").Unprotect Password:="[INSERT PASSWORD TO UNLOCK WORKSHEET]"
     ThisWorkbook.Sheets("Users & Licenses").Unprotect Password:="[INSERT PASSWORD TO UNLOCK WORKSHEET]"
+
 ' Declare Variables
     Dim ws As Worksheet
     Dim wsData As Worksheet
@@ -102,7 +103,7 @@ End Sub
 Sub UserReplacement()
 ' ORIGINAL CODE BY MARISSA J BRAND
 
-' The function of this macro is to automate the process of passing on the exact licenses of an inactive/old user in the table of the “Users & Licenses” worksheet to a new user.
+' The purpose of this macro is to automate the process of passing on the license(s) of an inactive/old user in the table of the “Users & Licenses” worksheet to a new user.
 ' This code neither adds or removes a row to the table.
 ' This code takes the value entered in A4 of the “REPLACE USER” worksheet,
 ' matches it with its equal value in Column A of the “Users & Licenses” worksheet, and replaces that value with the value in cell A6 of the “REPLACE USER” worksheet.
