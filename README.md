@@ -23,15 +23,15 @@ At the far right of the table, the number of licenses per user shows. Below the 
 This worksheet should always be protected to ensure no unnecessary changes are made to the datatable. 		
 	
 The “Users & Licenses” Worksheet contains the following information:
-Names of Licenses
-Names of Users (as they are added)
-What Licenses are tied to each User
-Number of Licenses per User
-Total number of Active Users
-Number of Active Users per License
-Total number of Licenses
-Number of Licenses per type
-Total number of licenses available 
+Names of Licenses,
+Names of Users (as they are added),
+What Licenses are tied to each User,
+Number of Licenses per User,
+Total number of Active Users,
+Number of Active Users per License,
+Total number of Licenses,
+Number of Licenses per type,
+Total number of licenses available, 
 Number of Licenses available per type
 
 In the “Users & Licenses” worksheet, in cells B4:G4, enter the number of licenses on-site, whether in-use or simply on-hand, per each type of license. 
