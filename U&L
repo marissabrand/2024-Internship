@@ -1,6 +1,7 @@
 Sub UserAddition()
 ' ORIGINAL CODE BY MARISSA J BRAND
 
+' Unlocks the "ADD USER" worksheet which allows the code to run
     ThisWorkbook.Sheets("ADD USER").Unprotect Password:="[INSERT PASSWORD TO UNLOCK WORKSHEET]"
     ThisWorkbook.Sheets("Users & Licenses").Unprotect Password:="[INSERT PASSWORD TO UNLOCK WORKSHEET]"
 
@@ -20,18 +21,17 @@ Sub UserAddition()
     Set ws = ThisWorkbook.Sheets("Users & Licenses")
     tableName = "UandL"
     
-On Error Resume Next
-Set tbl = ws.ListObjects(tableName)
-On Error GoTo 0
+    On Error Resume Next
+    Set tbl = ws.ListObjects(tableName)
+    On Error GoTo 0
 
-        
-' Check if tbl is successfully assigned
+' Check if tbl is successfully assigned, and if it is not, a message box will appear with the textstring: "'UandL' Table not found on the worksheet 'Users & Licenses'."
     If tbl Is Nothing Then
         MsgBox "'UandL' Table not found on the worksheet 'Users & Licenses'."
         Exit Sub
     End If
     
-' Loop through the table rows backwards to safely delete blank rows
+' Checks table for blank rows and deletes them 
     For i = tbl.ListRows.Count To 1 Step -1
         If WorksheetFunction.CountA(tbl.ListRows(i).Range) = 0 Then
             tbl.ListRows(i).Delete
