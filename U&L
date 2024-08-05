@@ -1,1 +1,209 @@
+Sub UserAddition()
+' ORIGINAL CODE BY MARISSA J BRAND
+    ThisWorkbook.Sheets("ADD USER").Unprotect Password:="[INSERT PASSWORD TO UNLOCK WORKSHEET]"
+    ThisWorkbook.Sheets("Users & Licenses").Unprotect Password:="[INSERT PASSWORD TO UNLOCK WORKSHEET]"
+' Declare Variables
+    Dim ws As Worksheet
+    Dim wsData As Worksheet
+    Dim tbl As ListObject
+    Dim tableName As String
+    Dim newRow As ListRow
+    Dim valueFromCell As Variant
+    Dim insertionRow As Long
+    Dim i As Long
+    Dim j As Long
+    Dim valueToCheck As Variant
+    
+' Set the worksheet where this macro is executed (adjust worksheet name as needed)
+    Set ws = ThisWorkbook.Sheets("Users & Licenses")
+    tableName = "UandL"
+    
+On Error Resume Next
+Set tbl = ws.ListObjects(tableName)
+On Error GoTo 0
 
+        
+' Check if tbl is successfully assigned
+    If tbl Is Nothing Then
+        MsgBox "'UandL' Table not found on the worksheet 'Users & Licenses'."
+        Exit Sub
+    End If
+    
+' Loop through the table rows backwards to safely delete blank rows
+    For i = tbl.ListRows.Count To 1 Step -1
+        If WorksheetFunction.CountA(tbl.ListRows(i).Range) = 0 Then
+            tbl.ListRows(i).Delete
+        End If
+    Next i
+
+' Set the worksheet where the data to be added is located
+    Set wsData = ThisWorkbook.Sheets("ADD USER")
+
+' Get the value from cell A4 in "ADD USER" sheet
+    valueFromCell = wsData.Range("A4").Value
+    
+' Find the insertion row above the "Info" range
+    insertionRow = ws.Range("Info").Row - 1
+
+' Add a new row above the determined insertion row
+    Set newRow = tbl.ListRows.Add(insertionRow)
+
+' Enter the value from A4 into the new row (first column)
+    newRow.Range(1, 1).Value = valueFromCell
+
+' Set "[INSERT ICON YOU WANT TO USE AS A MARKER WITHIN THE TABLE]" in columns B to G of the new row based on conditions in "ADD USER" sheet
+    For j = 2 To 7
+    
+    ' Check if B6 to B11 in "ADD USER" sheet contains "TRUE" for this column
+        valueToCheck = wsData.Cells(6 + j - 2, 2).Value  ' Offset by j to correspond to rows 6 to 11
+        If UCase(valueToCheck) = "TRUE" Then
+            newRow.Range(1, j).Value = "x"
+            With newRow.Range(1, j).Font
+                .Size = 10
+                .Color = RGB(255, 255, 255)  ' White color
+                .Name = "Calibri"
+            End With
+        Else
+' Optionally, clear the cell if the condition is not met
+            newRow.Range(1, j).ClearContents
+        End If
+    Next j
+    
+' Adjust row height of the new row to match the previous row
+    If tbl.ListRows.Count > 1 Then
+        Dim previousRowHeight As Double
+        previousRowHeight = tbl.ListRows(tbl.ListRows.Count - 1).Range.RowHeight
+        newRow.Range.RowHeight = previousRowHeight
+    End If
+
+' Ensure font color of "Info" range is set to white (RGB 255, 255, 255)
+    ws.Range("Info").Font.Color = RGB(255, 255, 255)
+    
+' Set font color of cell H2 to RGB (19, 47, 73)
+    ws.Range("H2").Font.Color = RGB(19, 47, 73)
+
+' Inform the user about the addition
+    MsgBox "User '" & valueFromCell & "' has been added."
+    
+ThisWorkbook.Sheets("ADD USER").Protect Password:="[INSERT PASSWORD TO UNLOCK WORKSHEET]"
+ThisWorkbook.Sheets("Users & Licenses").Protect Password:="[INSERT PASSWORD TO UNLOCK WORKSHEET]"
+
+End Sub
+
+
+
+Sub UserReplacement()
+' ORIGINAL CODE BY MARISSA J BRAND
+
+' The function of this macro is to automate the process of passing on the exact licenses of an inactive/old user in the table of the “Users & Licenses” worksheet to a new user.
+' This code neither adds or removes a row to the table.
+' This code takes the value entered in A4 of the “REPLACE USER” worksheet,
+' matches it with its equal value in Column A of the “Users & Licenses” worksheet, and replaces that value with the value in cell A6 of the “REPLACE USER” worksheet.
+' ONLY RUN THIS MACRO IF THE NAME OF THE USER TIED TO THE LICENSES IS THE ONLY THING CHANGING. USE “ADD USER” AND “REMOVE USER” FOR SEPARATE USER MODIFICATIONS.
+
+ThisWorkbook.Sheets("REPLACE USER").Unprotect Password:="[INSERT PASSWORD TO UNLOCK WORKSHEET]"
+ThisWorkbook.Sheets("Users & Licenses").Unprotect Password:="[INSERT PASSWORD TO UNLOCK WORKSHEET]"
+
+' Declare Variables
+    Dim wsSource As Worksheet
+    Dim wsTarget As Worksheet
+    Dim sourceValue As Variant
+    Dim replaceValue As Variant
+    Dim targetRange As Range
+    Dim cell As Range
+   
+' This code sets the source and target workbooks, or starting place and destination
+    Set wsSource = ThisWorkbook.Worksheets("Replace User") ' Adjust sheet name as needed
+    Set wsTarget = ThisWorkbook.Worksheets("Users & Licenses") ' Adjust sheet name as needed
+    
+' This code retrieves the values from the “REPLACE USER” worksheet that will be found and replaced within the table on the primary worksheet.
+    sourceValue = wsSource.Range("A4").Value
+    replaceValue = wsSource.Range("A6").Value
+    
+' This line sets, or defines, the cell range that will be searched through to find the value equal to that of cell A4.
+' In this case, that range is every row in columns A through H of the “Users & Licenses” worksheet.
+    Set targetRange = wsTarget.Range("A:H")
+
+' The last part of this macro searches through each cell in the defined range, checks if that value is equal to A4 in the “REPLACE USER” worksheet,
+' and will continue looping through each cell until it finds the equal match.
+' Once it does, it replaces the value in that cell with the value of cell A6 in the “REPLACE USER” worksheet.
+' No other information or value in the row should be affected when this macro is executed.
+    For Each cell In targetRange
+        If cell.Value = sourceValue Then
+            cell.Value = replaceValue
+        End If
+    Next cell
+    
+MsgBox "User '" & replaceValue & "' has been replaced with User '" & sourceValue & "'. License allocation remains unchanged."
+
+ThisWorkbook.Sheets("REPLACE USER").Protect Password:="[INSERT PASSWORD TO UNLOCK WORKSHEET]"
+ThisWorkbook.Sheets("Users & Licenses").Protect Password:="[INSERT PASSWORD TO UNLOCK WORKSHEET]"
+
+End Sub
+
+
+
+Sub UserRemoval()
+' ORIGINAL CODE BY MARISSA J BRAND
+
+ThisWorkbook.Sheets("REMOVE USER").Unprotect Password:="[INSERT PASSWORD TO UNLOCK WORKSHEET]"
+ThisWorkbook.Sheets("Users & Licenses").Unprotect Password:="[INSERT PASSWORD TO UNLOCK WORKSHEET]"
+
+' The function of this macro is to take the value of cell A4 in the “REMOVE USER” worksheet, match it its equal value in Column A of the “UandL” Table.
+' If there is no match found, the macro will stop running. If there is a match found, the code will operate to delete the entire row corresponding to that value.
+' All the formulas within the “Users & Licenses” worksheet operate to reflect any changes made based on macros in this workbook.
+
+' Declare Variables
+    Dim ws As Worksheet
+    Dim wsData As Worksheet
+    Dim tbl As ListObject
+    Dim tableName As String
+    Dim valueFromCell As Variant
+    Dim foundRow As ListRow
+    Dim searchValue As Variant
+    Dim i As Long
+
+' This line sets or defines the worksheet and table that the User will be removed from.
+' In this case, that worksheet is the “Users & Licenses” worksheet and the “UandL” Table within that worksheet.
+    Set ws = ThisWorkbook.Worksheets("Users & Licenses")
+    tableName = "UandL"
+
+' This portion of code will yield a Message Box with the message that the table is not found on the active worksheet, and will stop the macro from running.
+    On Error Resume Next
+    Set tbl = ws.ListObjects(tableName)
+    On Error GoTo 0
+    If tbl Is Nothing Then
+        MsgBox "'UandL' Table not found on the active sheet."
+        Exit Sub
+    End If
+    
+' This code deletes any rows from the table that are completely blank.
+    For i = tbl.ListRows.Count To 1 Step -1
+        If Application.WorksheetFunction.CountA(tbl.ListRows(i).Range) = 0 Then
+            tbl.ListRows(i).Delete
+        End If
+    Next i
+
+' This code sets the worksheet “REMOVE USER” as the location that the value in cell A4 will be pulled from.
+    Set wsData = ThisWorkbook.Sheets("REMOVE USER")
+    searchValue = wsData.Range("A4").Value
+
+' This final string of code loops through the rows of the “UandL” Table to find and match the value in cell A4 of the “REMOVE USER” worksheet with the respectful row.
+' If that value is found, the entire row is deleted, and the inputted formulas will automatically account for the available licenses following the deletion of the user.
+Set foundRow = Nothing
+    For Each foundRow In tbl.ListRows
+        If foundRow.Range(1, 1).Value = searchValue Then
+            foundRow.Delete
+            Exit For
+        End If
+    Next foundRow
+    If foundRow Is Nothing Then
+        MsgBox "No matching value found in the table."
+    Else
+        MsgBox "User '" & searchValue & "' has been removed."
+    End If
+       
+ThisWorkbook.Sheets("REMOVE USER").Protect Password:="[INSERT PASSWORD TO UNLOCK WORKSHEET]"
+ThisWorkbook.Sheets("Users & Licenses").Protect Password:="[INSERT PASSWORD TO UNLOCK WORKSHEET]"
+    
+End Sub
