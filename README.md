@@ -1,4 +1,4 @@
-Read Me: MJ Brand 2024 Internship INTERACTING WITH THE REBOOT NOTIF CODE:
+Read Me: MJ Brand 2024 INTERNSHIP 
 -
 
 
