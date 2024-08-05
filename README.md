@@ -1,7 +1,7 @@
-READ ME - MJ BRAND 2024 INTERNSHIP 
+Read Me - MJ Brand 2024 INTERNSHIP
 
 INTERACTING WITH THE REBOOT NOTIF CODE:
-
+-
 
 INTERACTING WITH THE USERS & LICENSES (“U&L”) EXCEL FILE:
 The file must be saved as an “Excel Macro-Enabled Workbook”, or the code will not run.
