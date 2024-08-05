@@ -3,8 +3,7 @@ Read Me: MJ Brand 2024 Internship INTERACTING WITH THE REBOOT NOTIF CODE:
 
 
 INTERACTING WITH THE "REBOOT NOTIF" VBA CODE AND THE "REBOOT NOTIF" EXCEL FILE:
-The file must be saved as an “Excel Macro-Enabled Workbook”, or the code will not run.
-*incomplete
+The file must be saved as an “Excel Macro-Enabled Workbook”, or the code will not run. *incomplete
 
 
 INTERACTING WITH THE "U&L" VBA CODE AND THE USERS & LICENSES (“U&L”) EXCEL FILE:
