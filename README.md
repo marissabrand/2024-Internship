@@ -3,8 +3,7 @@ READ ME - MJ BRAND 2024 INTERNSHIP
 INTERACTING WITH THE REBOOT NOTIF CODE:
 
 
-
-INTERACTING WITH THE USERS & LICENSES (“U&L”) EXCEL FILE
+INTERACTING WITH THE USERS & LICENSES (“U&L”) EXCEL FILE:
 The file must be saved as an “Excel Macro-Enabled Workbook”, or the code will not run.
 
 After saving the workbook as an “Excel Macro-Enabled Workbook”. 
@@ -54,7 +53,6 @@ The “Users & Licenses” worksheet will adjust automatically when the code is 
 - ADD USER: Cell A4 = Name of New User, Checkboxes, “SUBMIT” Button
 - REPLACE USER: Cell A4 = Name of Old User, Cell A6 = Name of New User , “SUBMIT” Button
 - REMOVE USER: Cell A4 = Name of User to-be-removed, “SUBMIT” Button
-
 
 What is typed in the yellow cells will not change the table in the “Users & Licenses” worksheet until the “SUBMIT” button of the active worksheet is pressed. 
 The “SUBMIT” button will prompt the macro to run, and if the operation is successful, a message box will pop up.
