@@ -1,3 +1,7 @@
+' ALL ORIGINAL CODE BY MARISSA J BRAND
+
+
+
 Sub UserAddition()
 ' ORIGINAL CODE BY MARISSA J BRAND
 
@@ -31,7 +35,7 @@ Sub UserAddition()
         Exit Sub
     End If
     
-' Checks table for blank rows and deletes them 
+' Checks table for blank rows and deletes them
     For i = tbl.ListRows.Count To 1 Step -1
         If WorksheetFunction.CountA(tbl.ListRows(i).Range) = 0 Then
             tbl.ListRows(i).Delete
@@ -96,10 +100,6 @@ End Sub
 
 
 
-
-
-
-
 Sub UserReplacement()
 ' ORIGINAL CODE BY MARISSA J BRAND
 
@@ -148,10 +148,6 @@ ThisWorkbook.Sheets("REPLACE USER").Protect Password:="[INSERT PASSWORD TO UNLOC
 ThisWorkbook.Sheets("Users & Licenses").Protect Password:="[INSERT PASSWORD TO UNLOCK WORKSHEET]"
 
 End Sub
-
-
-
-
 
 
 
