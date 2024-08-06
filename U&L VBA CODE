@@ -83,7 +83,7 @@ On Error GoTo 0
     ws.Range("Info").Font.Color = RGB(255, 255, 255)
     ws.Range("H2").Font.Color = RGB(19, 47, 73)
 
-' Message Box that will pop up if the operation is successful.
+' Message Box that pops up if the operation is successful.
     MsgBox "User '" & valueFromCell & "' has been added."
 
 ' Protects the worksheets involved in the running of the macro
@@ -91,6 +91,7 @@ ThisWorkbook.Sheets("ADD USER").Protect Password:="[INSERT PASSWORD TO UNLOCK WO
 ThisWorkbook.Sheets("Users & Licenses").Protect Password:="[INSERT PASSWORD TO UNLOCK WORKSHEET]"
 
 End Sub
+
 
 
 
@@ -105,8 +106,6 @@ Sub UserReplacement()
 ' Unprotects the worksheets involved in the macro.
 ThisWorkbook.Sheets("REPLACE USER").Unprotect Password:="[INSERT PASSWORD TO UNLOCK WORKSHEET]"
 ThisWorkbook.Sheets("Users & Licenses").Unprotect Password:="[INSERT PASSWORD TO UNLOCK WORKSHEET]"
-
-
 
 ‘Declare Variables
     Dim wsSource As Worksheet
@@ -145,6 +144,7 @@ ThisWorkbook.Sheets("REPLACE USER").Protect Password:="[INSERT PASSWORD TO UNLOC
 ThisWorkbook.Sheets("Users & Licenses").Protect Password:="[INSERT PASSWORD TO UNLOCK WORKSHEET]"
 
 End Sub
+
 
 
 
