@@ -1,9 +1,6 @@
 ' ALL ORIGINAL CODE BY MARISSA J BRAND
 
 
-
-
-
 Sub UserAddition()
 ' ORIGINAL CODE BY MARISSA J BRAND
 
@@ -94,8 +91,6 @@ ThisWorkbook.Sheets("ADD USER").Protect Password:="[INSERT PASSWORD TO UNLOCK WO
 ThisWorkbook.Sheets("Users & Licenses").Protect Password:="[INSERT PASSWORD TO UNLOCK WORKSHEET]"
 
 End Sub
-
-
 
 
 
@@ -219,3 +214,8 @@ ThisWorkbook.Sheets("REMOVE  USER").Protect Password:="[INSERT PASSWORD TO UNLOC
 ThisWorkbook.Sheets("Users & Licenses").Protect Password:="[INSERT PASSWORD TO UNLOCK WORKSHEET]"
 
 End Sub
+
+
+
+
+
