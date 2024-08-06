@@ -3,7 +3,7 @@ Read Me: MJ Brand 2024 INTERNSHIP
 *all code must be saved in a MACRO-ENABLED Excel workbook or it will not run*
 
 INTERACTING WITH THE "REBOOT NOTIF" VBA CODE:
-incomplete.
+incomplete. Code is relatively pre-structured.
 
 INTERACTING WITH THE "U&L" VBA CODE AND THE USERS & LICENSES (“U&L”) EXCEL FILE:
 The file must be saved as an “Excel Macro-Enabled Workbook”, or the code will not run.
