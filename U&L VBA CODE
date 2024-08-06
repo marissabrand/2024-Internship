@@ -127,7 +127,8 @@ ThisWorkbook.Sheets("Users & Licenses").Unprotect Password:="[INSERT PASSWORD TO
 ' In this case, that range is every row in columns A through H of the “Users & Licenses” worksheet.
     Set targetRange = wsTarget.Range("A:H") ' Adjust the range as needed
 
-' The last part of this macro searches through each cell in the defined range, checks if that value is equal to A4 in the “REPLACE USER” worksheet, and will continue looping through each cell until it finds the equal match.
+' The last part of this macro searches through each cell in the defined range, checks if that value is equal to A4 in the “REPLACE USER” worksheet, 
+' and will continue looping through each cell until it finds the equal match.
 ' Once it does, it replaces the value in that cell with the value of cell A6 in the “REPLACE USER” worksheet.
 ' No other information or value in the row should be affected when this macro is executed.
     For Each cell In targetRange
