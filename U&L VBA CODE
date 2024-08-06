@@ -111,6 +111,8 @@ Sub UserReplacement()
 ThisWorkbook.Sheets("REPLACE USER").Unprotect Password:="[INSERT PASSWORD TO UNLOCK WORKSHEET]"
 ThisWorkbook.Sheets("Users & Licenses").Unprotect Password:="[INSERT PASSWORD TO UNLOCK WORKSHEET]"
 
+
+
 ‘Declare Variables
     Dim wsSource As Worksheet
     Dim wsTarget As Worksheet
@@ -148,8 +150,6 @@ ThisWorkbook.Sheets("REPLACE USER").Protect Password:="[INSERT PASSWORD TO UNLOC
 ThisWorkbook.Sheets("Users & Licenses").Protect Password:="[INSERT PASSWORD TO UNLOCK WORKSHEET]"
 
 End Sub
-
-
 
 
 
